@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Educación Secundaria Julia León</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* ===================== ESTILO GENERAL ===================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===================== IMAGEN DE FONDO ===================== */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../Escuela/image/bibliob.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #0d47a1;
+        }
+
+        /* ===================== NAVBAR ===================== */
+        .navbar {
+            background: #e3f2fd;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ===================== TÍTULO ANIMADO ===================== */
+        .navbar-title {
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #0d47a1;
+            margin-bottom: 0.4rem;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: bounceIn 1s ease forwards;
+        }
+
+        .navbar-title span {
+            color: #1976d2;
+            animation: colorPulse 3s infinite alternate;
+        }
+
+        /* ===================== MENÚ ===================== */
+        .navbar-nav .nav-link {
+            color: #0d47a1;
+            font-weight: 600;
+            margin-right: 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        /* ===================== BOTÓN CONTACTO ===================== */
+        .btn-contacto {
+            background: #1976d2;
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 8px 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .btn-contacto:hover {
+            background: #1565c0;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar-toggler {
+            border-color: #0d47a1;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 71, 161, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+        }
+
+        /* ===================== CARRUSEL ===================== */
+        .carrusel-mediano {
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #1976d2;
+        }
+
+        .carrusel-mediano .carousel-inner img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .carrusel-mediano .carousel-inner img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===================== ACORDEÓN ===================== */
+        .accordion-item {
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            border: 1px solid #d8e2f3;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .accordion-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .accordion-button {
+            background-color: #bbdefb;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0d47a1;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+
+        .accordion-button:hover {
+            background-color: #90caf9;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #1976d2;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .accordion-body {
+            background-color: #e3f2fd;
+            padding: 18px 24px;
+            font-size: 1rem;
+            color: #0d47a1;
+            line-height: 1.6;
+        }
+
+        .accordion-body ul li {
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .accordion-body ul li:hover {
+            background-color: #bbdefb;
+            border-radius: 6px;
+            padding-left: 8px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #bbdefb;
+            color: #0d47a1;
+            border-top: 2px solid #90caf9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        /* ===================== ANIMACIONES ===================== */
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes colorPulse {
+            0% {
+                color: #1976d2;
+            }
+
+            50% {
+                color: #42a5f5;
+            }
+
+            100% {
+                color: #1976d2;
+            }
+        }
+          /* Contenedor de cards */
+    .proyectos-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px auto 50px auto;
+        max-width: 1200px;
+    }
+
+    .proyecto-card {
+        background-color: #bbdefb;
+        color: #0d47a1;
+        width: 250px;
+        min-height: 100px;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .proyecto-card:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        background-color: #1976d2;
+        color: white;
+        cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid flex-column align-items-start">
+
+            <!-- Título principal -->
+            <div class="navbar-title">
+                🎓 Escuela de <span>Educación Secundaria</span> Julia León 📚✨
+            </div>
+
+            <!-- Menú de secciones -->
+            <div class="collapse navbar-collapse flex-column flex-lg-row w-100" id="navbarNavAltMarkup">
+                <div class="navbar-nav flex-column flex-lg-row w-100">
+                    <a class="nav-link px-3 py-1" href="../Escuela/index.html">Inicio</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Institucional.html">Institucional</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Equipodetrabajo.html">Equipo de trabajo</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Secretaría.html">Secretaría</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Biblioteca.html">Biblioteca</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Proyectos.html">Proyectos Escolares</a>
+                </div>
+
+                <!-- Botón contacto -->
+                <a class="btn btn-contacto d-flex align-items-center gap-2 mt-2 mt-lg-0" href="../Escuela/Contacto.html">
+                    <i class="bi bi-envelope-fill"></i> Contacto
+                </a>
+            </div>
+
+            <!-- Toggler móvil -->
+            <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+    <div class="container mt-4">
+    <h2 class="text-center mb-4">Proyectos y Actividades 2025</h2>
+    <div class="proyectos-grid">
+        <div class="proyecto-card">“Puentes hacia secundaria” 2025</div>
+            <div class="proyecto-card">“Conecta2 entre ciclos”</div>
+            <div class="proyecto-card">“Puente entre la palabra y el saber”</div>
+            <div class="proyecto-card">“San Juan, se mueve”</div>
+            <div class="proyecto-card">“Tu cuerpo en acción; Un viaje hacia la salud con la Educación Física”</div>
+            <div class="proyecto-card">“Mi patio, mi casa 2”</div>
+            <div class="proyecto-card">“Símbolos y valores patrios”</div>
+            <div class="proyecto-card">Nuestra Bandera, Símbolo de unión y libertad.</div>
+            <div class="proyecto-card">“El escudo: Unidad libertad y trabajo en el símbolo”</div>
+            <div class="proyecto-card">“Nuestra bandera Sanjuanina: identidad, historia y pertenencia.”</div>
+            <div class="proyecto-card">“Conociendo y valorando nuestro Himno Nacional”</div>
+            <div class="proyecto-card">“Fortaleciendo la Educación Física con nuevos materiales”</div>
+            <div class="proyecto-card">“La escarapela: Símbolo de Identidad y Patriotismo”</div>
+            <div class="proyecto-card">“Explorando Senderos: Cuerpo Bienestar y Respeto por la Naturaleza”</div>
+            <div class="proyecto-card">Proyecto Curricular Anual Interdisciplinario “Técnicas de Estudio”</div>
+            <div class="proyecto-card">“Construir para vivir del agua al temblor”</div>
+            <div class="proyecto-card">“El mundo en Movimiento”</div>
+            <div class="proyecto-card">“Explorando y protegiendo nuestro Ecosistema”</div>
+            <div class="proyecto-card">“Biodiversidad y Salud: Conociendo a nuestros vecinos peligrosos”</div>
+            <div class="proyecto-card">“Explorando los materiales en la tecnología”</div>
+            <div class="proyecto-card">“Mi agenda inteligente”</div>
+            <div class="proyecto-card">“San Juan se mueve”</div>
+            <div class="proyecto-card">“Canal de Panamá: Valor Geopolítico”</div>
+            <div class="proyecto-card">“Hilograma en polígonos”</div>
+            <div class="proyecto-card">“Alimentación saludable y trastornos alimenticios en adolescentes”</div>
+            <div class="proyecto-card">“Do we eat healthily?”</div>
+            <div class="proyecto-card">“Responsabilidad Social: Uso de Energías Renovables”</div>
+            <div class="proyecto-card">“Cuidemos nuestro cuerpo, cuidemos nuestra vida”</div>
+            <div class="proyecto-card">“Las Malvinas son argentinas”</div>
+            <div class="proyecto-card">“Sembrando Valores”</div>
+            <div class="proyecto-card">“Explorando la Ciencia y la Tecnología: Visita al Conectar Lab”</div>
+            <div class="proyecto-card">“La Provincia en nuestra vida cotidiana y el cuidado del medio ambiente”</div>
+            <div class="proyecto-card">“La ciencia detrás de los elementos: El origen de la materia y su impacto en la tecnología y salud”</div>
+            <div class="proyecto-card">“Touring Our School”</div>
+            <div class="proyecto-card">“Descubriendo mi futuro”</div>
+            <div class="proyecto-card">“Aprender para sentir, sentir para aprender”</div>
+            <div class="proyecto-card">“Tejiendo lazos: Uniendo hilos para transformar realidades” Visita casa D. Faustino Sarmiento</div>
+            <div class="proyecto-card">“Palabras que resisten, Narrar y comunicar los terremotos en San Juan”</div>
+            <div class="proyecto-card">“La importancia del cuidado del agua en San Juan”</div>
+            <div class="proyecto-card">“Emociones en red: conectando con uno mismo fuera de la pantalla”</div>
+            <div class="proyecto-card">“Leer-Flix: Maratón de lectura y escritura académica”</div>
+            <div class="proyecto-card">“Equilibrio Estático”</div>
+            <div class="proyecto-card">“El agua: estructura propiedades y su impacto ambiental”</div>
+            <div class="proyecto-card">“Química del color; Reacciones que tiene nuestro entorno”</div>
+            <div class="proyecto-card">“A personal model board”</div>
+            <div class="proyecto-card">“Producción Textual y Comprensión Lectora”</div>
+            <div class="proyecto-card">“Por qué los microbios se vuelven resistentes?”</div>
+            <div class="proyecto-card">“Análisis de las perdidas territoriales de Argentina”</div>
+            <div class="proyecto-card">“Hacia el conocimiento de la Educación como derecho”</div>
+            <div class="proyecto-card">“Conocer y dar a conocer las vinculaciones de la Escuela articulando con el C. Básico”</div>
+            <div class="proyecto-card">“Modelo de Naciones Unidas conjuntamente con Institutos Pre Universitarios D. F Sarmiento (UNSJ)”</div>
+            <div class="proyecto-card">“Acontecimiento democrático; Torneo de debate”</div>
+            <div class="proyecto-card">“My social media profile”</div>
+            <div class="proyecto-card">“Visita a la Feria Educativa de la UNSJ y UCC 2025”</div>
+            <div class="proyecto-card">“Visita a la Feria Educativa de Nivel Terciario”</div>
+            <div class="proyecto-card">“My bullet diary”</div>
+            <div class="proyecto-card">“Conociendo lo nuestro”</div>
+            <div class="proyecto-card">“Matemáticas del sentir analizando emociones con números reales”</div>
+            <div class="proyecto-card">“Investigación Educativa como actividad científica”</div>
+            <div class="proyecto-card">“Stand Informativa e interactiva sobre la búsqueda de empleo y armado de CV”</div>
+            <div class="proyecto-card">“Juntos: Presentación de camperas”</div>
+            <div class="proyecto-card">“Tecnología, Inteligencia Artificial y Educación”</div>
+            <div class="proyecto-card">“Excursión Geográfica al Dique Punta Negra San Juan”</div>
+
+        <!-- ...continúa con todos tus proyectos en el mismo formato ... -->
+    </div>
+
+      <!-- FOOTER -->
+    <footer>
+        <p>🎓 Escuela de Educación Secundaria Julia León ® - 2025 📚✨</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
