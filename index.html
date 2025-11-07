@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Educación Secundaria Julia León</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* ===================== ESTILO GENERAL ===================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===================== IMAGEN DE FONDO ===================== */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../Escuela/image/bibliob.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #0d47a1;
+        }
+
+        /* ===================== NAVBAR ===================== */
+        .navbar {
+            background: #e3f2fd;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ===================== TÍTULO ANIMADO ===================== */
+        .navbar-title {
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #0d47a1;
+            margin-bottom: 0.4rem;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: bounceIn 1s ease forwards;
+        }
+
+        .navbar-title span {
+            color: #1976d2;
+            animation: colorPulse 3s infinite alternate;
+        }
+
+        /* ===================== MENÚ ===================== */
+        .navbar-nav .nav-link {
+            color: #0d47a1;
+            font-weight: 600;
+            margin-right: 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        /* ===================== BOTÓN CONTACTO ===================== */
+        .btn-contacto {
+            background: #1976d2;
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 8px 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .btn-contacto:hover {
+            background: #1565c0;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar-toggler {
+            border-color: #0d47a1;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 71, 161, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+        }
+
+        /* ===================== CARRUSEL ===================== */
+        .carrusel-mediano {
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #1976d2;
+        }
+
+        .carrusel-mediano .carousel-inner img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .carrusel-mediano .carousel-inner img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===================== ACORDEÓN ===================== */
+        .accordion-item {
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            border: 1px solid #d8e2f3;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .accordion-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .accordion-button {
+            background-color: #bbdefb;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0d47a1;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+
+        .accordion-button:hover {
+            background-color: #90caf9;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #1976d2;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .accordion-body {
+            background-color: #e3f2fd;
+            padding: 18px 24px;
+            font-size: 1rem;
+            color: #0d47a1;
+            line-height: 1.6;
+        }
+
+        .accordion-body ul li {
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .accordion-body ul li:hover {
+            background-color: #bbdefb;
+            border-radius: 6px;
+            padding-left: 8px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #bbdefb;
+            color: #0d47a1;
+            border-top: 2px solid #90caf9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        /* ===================== ANIMACIONES ===================== */
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes colorPulse {
+            0% {
+                color: #1976d2;
+            }
+
+            50% {
+                color: #42a5f5;
+            }
+
+            100% {
+                color: #1976d2;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid flex-column align-items-start">
+
+            <!-- Título principal -->
+            <div class="navbar-title">
+                🎓 Escuela de <span>Educación Secundaria</span> Julia León 📚✨
+            </div>
+
+            <!-- Menú de secciones -->
+            <div class="collapse navbar-collapse flex-column flex-lg-row w-100" id="navbarNavAltMarkup">
+                <div class="navbar-nav flex-column flex-lg-row w-100">
+                    <a class="nav-link px-3 py-1" href="../Escuela/index.html">Inicio</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Institucional.html">Institucional</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Equipodetrabajo.html">Equipo de trabajo</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Secretaría.html">Secretaría</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Biblioteca.html">Biblioteca</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Proyectos.html">Proyectos Escolares</a>
+                </div>
+
+                <!-- Botón contacto -->
+                <a class="btn btn-contacto d-flex align-items-center gap-2 mt-2 mt-lg-0" href="../Escuela/Contacto.html">
+                    <i class="bi bi-envelope-fill"></i> Contacto
+                </a>
+            </div>
+
+            <!-- Toggler móvil -->
+            <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- CARRUSEL -->
+    <div id="carouselExampleIndicators" class="carousel slide carrusel-mediano" data-bs-ride="carousel"
+        data-bs-interval="3000" data-bs-pause="hover">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../Escuela/image/personal-institucional.jpg" class="d-block w-100" alt="Personal">
+            </div>
+            <div class="carousel-item">
+                <img src="../Escuela/image/fondo1c.JPG" class="d-block w-100" alt="Instalaciones">
+            </div>
+            <div class="carousel-item">
+                <img src="../Escuela/image/alumnos-auditorio.jpg" class="d-block w-100" alt="Alumnos">
+            </div>
+            <div class="carousel-item">
+                <img src="../Escuela/image/trabajo-enclase.jpg" class="d-block w-100" alt="Alumnos">
+            </div>
+            <div class="carousel-item">
+                <img src="../Escuela/image/trabajoenclase1.jpg" class="d-block w-100" alt="Alumnos">
+            </div>
+            <div class="carousel-item">
+                <img src="../Escuela/image/trabajo-pee.jpg" class="d-block w-100" alt="Alumnos">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- ACORDEÓN INSTITUCIONAL -->
+    <div class="container my-4">
+        <div class="accordion" id="accordionInstitucion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingHist">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseHist" aria-expanded="true" aria-controls="collapseHist">
+                        🏫 Sobre Nuestra Institución
+                    </button>
+                </h2>
+                <div id="collapseHist" class="accordion-collapse collapse show" aria-labelledby="headingHist"
+                    data-bs-parent="#accordionInstitucion">
+                    <div class="accordion-body">
+                        La <strong>Escuela de Educación Secundaria “Julia León”</strong> es una institución
+                        pública comprometida con brindar una educación de calidad, inclusiva y gratuita para
+                        adolescentes y jóvenes. Nuestra propuesta educativa se centra en la formación integral,
+                        promoviendo tanto el desarrollo académico como social y emocional de los estudiantes.
+
+                        <strong>Principales características de nuestra institución:</strong>
+                        <ul>
+                            <li>Educación secundaria completa con orientación en <em>Ciencias Sociales</em> y
+                                <em>Humanidades y Orientación Educación</em>.</li>
+                            <li>Promoción de valores como respeto, solidaridad, responsabilidad y compromiso
+                                social.</li>
+                            <li>Participación activa de familias y comunidad en la vida escolar.</li>
+                            <li>Espacios de aprendizaje innovadores: laboratorios, biblioteca, talleres
+                                culturales y deportivos.</li>
+                            <li>Programas de inclusión, integración y acompañamiento socioeducativo.</li>
+                            <li>Fomento de la creatividad, pensamiento crítico y ciudadanía responsable.</li>
+                        </ul>
+
+                        Nuestro objetivo es que cada estudiante pueda desarrollarse plenamente, descubrir sus
+                        talentos, construir un proyecto de vida consciente y acceder a oportunidades de
+                        educación superior o inserción laboral con herramientas sólidas.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🎓 Escuela de Educación Secundaria Julia León ® - 2025 📚✨</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

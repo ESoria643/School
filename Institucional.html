@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Educación Secundaria Julia León</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        /* ===================== ESTILO GENERAL ===================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===================== IMAGEN DE FONDO ===================== */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../Escuela/image/bibliob.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #0d47a1;
+        }
+
+        /* ===================== NAVBAR ===================== */
+        .navbar {
+            background: #e3f2fd;
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* ===================== TÍTULO ANIMADO ===================== */
+        .navbar-title {
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: #0d47a1;
+            margin-bottom: 0.4rem;
+            font-family: 'Segoe UI', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: bounceIn 1s ease forwards;
+        }
+
+        .navbar-title span {
+            color: #1976d2;
+            animation: colorPulse 3s infinite alternate;
+        }
+
+        /* ===================== MENÚ ===================== */
+        .navbar-nav .nav-link {
+            color: #0d47a1;
+            font-weight: 600;
+            margin-right: 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff;
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+
+        /* ===================== BOTÓN CONTACTO ===================== */
+        .btn-contacto {
+            background: #1976d2;
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 8px 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .btn-contacto:hover {
+            background: #1565c0;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .navbar-toggler {
+            border-color: #0d47a1;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 71, 161, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
+        }
+
+        /* ===================== CARRUSEL ===================== */
+        .carrusel-mediano {
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #1976d2;
+        }
+
+        .carrusel-mediano .carousel-inner img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .carrusel-mediano .carousel-inner img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===================== ACORDEÓN ===================== */
+        .accordion-item {
+            border-radius: 12px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            border: 1px solid #d8e2f3;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .accordion-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .accordion-button {
+            background-color: #bbdefb;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #0d47a1;
+            padding: 16px;
+            transition: all 0.3s;
+        }
+
+        .accordion-button:hover {
+            background-color: #90caf9;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #1976d2;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .accordion-body {
+            background-color: #e3f2fd;
+            padding: 18px 24px;
+            font-size: 1rem;
+            color: #0d47a1;
+            line-height: 1.6;
+        }
+
+        .accordion-body ul li {
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .accordion-body ul li:hover {
+            background-color: #bbdefb;
+            border-radius: 6px;
+            padding-left: 8px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #bbdefb;
+            color: #0d47a1;
+            border-top: 2px solid #90caf9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        /* ===================== ANIMACIONES ===================== */
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes colorPulse {
+            0% {
+                color: #1976d2;
+            }
+
+            50% {
+                color: #42a5f5;
+            }
+
+            100% {
+                color: #1976d2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+   <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid flex-column align-items-start">
+
+            <!-- Título principal -->
+            <div class="navbar-title">
+                🎓 Escuela de <span>Educación Secundaria</span> Julia León 📚✨
+            </div>
+
+            <!-- Menú de secciones -->
+            <div class="collapse navbar-collapse flex-column flex-lg-row w-100" id="navbarNavAltMarkup">
+                <div class="navbar-nav flex-column flex-lg-row w-100">
+                    <a class="nav-link px-3 py-1" href="../Escuela/index.html">Inicio</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Institucional.html">Institucional</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Equipodetrabajo.html">Equipo de trabajo</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Secretaría.html">Secretaría</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Biblioteca.html">Biblioteca</a>
+                    <a class="nav-link px-3 py-1" href="../Escuela/Proyectos.html">Proyectos Escolares</a>
+                </div>
+
+                <!-- Botón contacto -->
+                <a class="btn btn-contacto d-flex align-items-center gap-2 mt-2 mt-lg-0" href="../Escuela/Contacto.html">
+                    <i class="bi bi-envelope-fill"></i> Contacto
+                </a>
+            </div>
+
+            <!-- Toggler móvil -->
+            <button class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
+
+    <div class="accordion" id="accordionInstitucion">
+
+        <!-- 1. Identidad Institucional -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingIdentidad">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseIdentidad" aria-expanded="true" aria-controls="collapseIdentidad">
+                    🏫 Identidad Institucional
+                </button>
+            </h2>
+            <div id="collapseIdentidad" class="accordion-collapse collapse show" aria-labelledby="headingIdentidad"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    La Escuela de Educación Secundaria <strong>“Julia León”</strong> es una institución pública
+                    comprometida con
+                    la formación integral de adolescentes y jóvenes. Desde su creación, promueve una educación
+                    inclusiva,
+                    gratuita y de calidad, donde cada estudiante pueda desarrollarse en un ambiente de respeto,
+                    igualdad y
+                    convivencia democrática.
+                    <br><br>
+                    Su propuesta educativa se basa en el trabajo colaborativo, la participación estudiantil y la
+                    construcción de una ciudadanía activa y solidaria.
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Misión y Visión -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMision">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseMision" aria-expanded="false" aria-controls="collapseMision">
+                    🎯 Misión y Visión
+                </button>
+            </h2>
+            <div id="collapseMision" class="accordion-collapse collapse" aria-labelledby="headingMision"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    <strong>Misión:</strong> Brindar una educación secundaria de calidad que garantice el acceso, la
+                    permanencia y la formación integral de todos los estudiantes, acompañando sus trayectorias y
+                    promoviendo
+                    el pensamiento crítico, la creatividad y la responsabilidad social.
+                    <br><br>
+                    <strong>Visión:</strong> Ser una institución reconocida por su compromiso con la comunidad, la
+                    innovación
+                    pedagógica y la formación de ciudadanos capaces de construir un futuro justo, inclusivo y
+                    sostenible.
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Valores Institucionales -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingValores">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseValores" aria-expanded="false" aria-controls="collapseValores">
+                    💡 Valores Institucionales
+                </button>
+            </h2>
+            <div id="collapseValores" class="accordion-collapse collapse" aria-labelledby="headingValores"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    Nuestra escuela promueve valores que orientan el trabajo diario y las relaciones entre todos los
+                    integrantes de la comunidad educativa:
+                    <ul>
+                        <li>Respeto y empatía en la convivencia escolar.</li>
+                        <li>Responsabilidad y compromiso con el aprendizaje.</li>
+                        <li>Solidaridad y participación activa en la comunidad.</li>
+                        <li>Inclusión, diversidad e igualdad de oportunidades.</li>
+                        <li>Honestidad, cooperación y trabajo en equipo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Proyectos Educativos y Culturales -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingProyectos">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseProyectos" aria-expanded="false" aria-controls="collapseProyectos">
+                    📚 Proyectos Educativos y Culturales
+                </button>
+            </h2>
+            <div id="collapseProyectos" class="accordion-collapse collapse" aria-labelledby="headingProyectos"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    A lo largo del año, la escuela impulsa múltiples proyectos que fortalecen el aprendizaje y la
+                    identidad
+                    institucional:
+                    <ul>
+                        <li>Feria del Libro y encuentros literarios escolares.</li>
+                        <li>Proyectos ambientales y de reciclaje comunitario.</li>
+                        <li>Jornadas culturales, científicas y artísticas.</li>
+                        <li>Actividades de integración y convivencia entre cursos.</li>
+                        <li>Charlas y talleres sobre ciudadanía digital, salud y derechos humanos.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Vínculo con la Comunidad -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingComunidad">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseComunidad" aria-expanded="false" aria-controls="collapseComunidad">
+                    🤝 Vínculo con la Comunidad
+                </button>
+            </h2>
+            <div id="collapseComunidad" class="accordion-collapse collapse" aria-labelledby="headingComunidad"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    La EES “Julia León” mantiene un compromiso activo con su entorno social, trabajando junto a
+                    familias,
+                    organizaciones barriales e instituciones locales. A través de la participación comunitaria, se
+                    fortalecen los lazos entre escuela y sociedad, favoreciendo la construcción de una educación con
+                    sentido
+                    social y transformador.
+                    <br><br>
+                    <em>La escuela es, ante todo, un espacio de encuentro, aprendizaje y crecimiento colectivo.</em>
+                </div>
+            </div>
+        </div>
+        <!-- 5. Propuesta académica -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPropuesta">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsePropuesta" aria-expanded="false" aria-controls="collapsePropuesta">
+                    📓 Propuesta Académica
+                </button>
+            </h2>
+            <div id="collapsePropuesta" class="accordion-collapse collapse" aria-labelledby="headingPropuesta"
+                data-bs-parent="#accordionInstitucion">
+                <div class="accordion-body">
+                    La Escuela de Educación Secundaria “Julia León” ofrece una propuesta académica diseñada para
+                    brindar una formación integral que prepare a los estudiantes para su futuro personal, académico
+                    y profesional. El plan de estudios se enriquece con dos orientaciones específicas que permiten a
+                    los jóvenes profundizar en áreas de conocimiento según sus intereses.
+                    <br><br>
+
+                    <strong>🧠 Orientación en Ciencias Sociales</strong><br>
+                    Esta orientación promueve el análisis crítico de la realidad social, política, económica y
+                    cultural, desarrollando habilidades que permiten comprender el funcionamiento de la sociedad y
+                    sus transformaciones.
+                    <br><br>
+                    <u>Los estudiantes adquieren herramientas para:</u>
+                    <ul>
+                        <li>Interpretar problemáticas actuales desde una mirada reflexiva y fundamentada.</li>
+                        <li>Analizar procesos históricos, sociales y culturales.</li>
+                        <li>Participar activamente como ciudadanos informados y comprometidos con su comunidad.</li>
+                    </ul>
+                    Es ideal para quienes se interesan por la historia, la política, la comunicación, la sociología
+                    y los fenómenos sociales.
+                    <br><br>
+
+                    <strong>✨ Orientación en Humanidades y Educación</strong><br>
+                    Esta orientación se centra en el desarrollo de capacidades comunicativas, expresivas y
+                    socioemocionales, promoviendo el conocimiento sobre los procesos educativos, culturales y del
+                    comportamiento humano.
+                    <br><br>
+                    <u>Los estudiantes fortalecen competencias en:</u>
+                    <ul>
+                        <li>Comunicación oral y escrita.</li>
+                        <li>Comprensión del rol educativo y del trabajo con grupos.</li>
+                        <li>Desarrollo de la empatía, la creatividad y la expresión.</li>
+                    </ul>
+                    Es una opción adecuada para quienes se inclinan por la docencia, la comunicación, las artes, la
+                    psicología, el acompañamiento educativo y el trabajo con niños, adolescentes o comunidades.
+                    <br><br>
+
+                    <strong>🎯 Nuestro objetivo</strong><br>
+                    A través de estas dos orientaciones, buscamos que cada estudiante pueda:
+                    <ul>
+                        <li>Descubrir sus intereses y talentos.</li>
+                        <li>Construir un proyecto de vida consciente y significativo.</li>
+                        <li>Continuar estudios superiores o insertarse en el mundo laboral con herramientas sólidas.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+       <!-- FOOTER -->
+    <footer>
+        <p>🎓 Escuela de Educación Secundaria Julia León ® - 2025 📚✨</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
